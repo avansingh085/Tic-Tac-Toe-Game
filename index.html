@@ -140,7 +140,7 @@
                     document.getElementsByClassName('box')[4].style.backgroundColor="green";
                     document.getElementsByClassName('box')[8].style.backgroundColor="green";
                     document.getElementsByClassName('turn')[0].style.backgroundColor="green";
-                    document.getElementsByClassName('turn')[0].value=document.getElementsByClassName('box')[(parseInt(index/3)*3)+2].value+" winner";
+                    document.getElementsByClassName('turn')[0].value=document.getElementsByClassName('box')[0].value+" winner";
                     x=9;
                  }
                  if(document.getElementsByClassName('box')[2].value.length>0&&document.getElementsByClassName('box')[2].value===document.getElementsByClassName('box')[4].value&&document.getElementsByClassName('box')[4].value===document.getElementsByClassName('box')[6].value)
@@ -149,7 +149,7 @@
                     document.getElementsByClassName('box')[4].style.backgroundColor="green";
                     document.getElementsByClassName('box')[6].style.backgroundColor="green";
                     document.getElementsByClassName('turn')[0].style.backgroundColor="green";
-                    document.getElementsByClassName('turn')[0].value=document.getElementsByClassName('box')[(parseInt(index/3)*3)+2].value+" winner";
+                    document.getElementsByClassName('turn')[0].value=document.getElementsByClassName('box')[2].value+" winner";
                     x=9;
                  }
 
