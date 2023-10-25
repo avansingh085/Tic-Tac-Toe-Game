@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin:0px 0px;
+        padding:0px 0px;
+    }
+    .header{
+        height:50px;
+        width:100%;
+        background-color:coral;
+        display:grid;
+        align-items: center;
+        justify-items: center;
+        font-size:30px;
+        color:white;
+    }
+    .main{
+        height:100vh;
+        width:100%;
+        background-color:rgb(20, 20, 52);
+    }
+    .box{
+        background-color:aqua;
+        color:white;
+        font-size:25px;
+    }
+    .front-activity{
+        height:90vh;
+        width:100%;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+    }
+    .turn{
+        height:60px;
+        width:300px;
+        opacity:0;
+        color:white;
+        background-color: darkslategrey;
+        font-size:25px;
+        border-width:0px;
+        border-radius: 10px;
+    }
+    .box{
+        height:50px;
+        width:50px;
+    }
+    .game-box{
+        height:170px;
+        width:170px;
+        display: grid;
+        opacity: 0;
+        grid-template-columns: 33% 33% 33%;
+    }
+    .newGame{
+        height:50px;
+        width:200px;
+        background-color:rgb(24, 164, 129);
+        color:white;
+        border-width:0px;
+        font-size:20px;
+        border-radius: 5px;
+    }
+    .newGame:hover{
+        background-image: linear-gradient(rgb(208, 30, 214),rgb(66, 66, 249));
+        font-size:23px;
+        border-radius: 10px;
+    }
+</style>
+<body>
+    <div class="main">
+        <div class="header">
+            <div>Game</div>
+        </div>
+        <div class="front-activity">
+            <input type="button" class="turn" onClick="start(this)" value="Start Game">
+            <div class="game-box">
+                <input type="button" class="box" onclick="fun(this,0)">
+                <input type="button" class="box" onclick="fun(this,1)">
+                <input type="button" class="box" onclick="fun(this,2)">
+                <input type="button" class="box" onclick="fun(this,3)">
+                <input type="button" class="box" onclick="fun(this,4)">
+                <input type="button" class="box" onclick="fun(this,5)">
+                <input type="button" class="box" onclick="fun(this,6)">
+                <input type="button" class="box" onclick="fun(this,7)">
+                <input type="button" class="box" onclick="fun(this,8)">
+            </div>
+            
+            <input type="button" value="New Game" class="newGame" onclick="NewGame()">
+        </div>
+
+    </div>
+    <script>
+        var x=0;
+        var arrRX=[0,0,0];
+        var arrCX=[0,0,0];
+        var arrRO=[0,0,0];
+        var arrCO=[0,0,0];
+        
+        function fun(setValue,index){
+            if(x>=9)
+            {
+              
+              return;
+            }
+            if(setValue.value==="")
+            {
+              if(x%2==0)
+              {
+                document.getElementsByClassName('turn')[0].value="O turn";
+                setValue.value="X";
+              }
+              else
+              {
+                setValue.value="O";
+                document.getElementsByClassName('turn')[0].value="X turn";
+              }
+               if(document.getElementsByClassName('box')[(parseInt(index/3)*3)].value===document.getElementsByClassName('box')[(parseInt(index/3)*3)+1].value&&document.getElementsByClassName('box')[(parseInt(index/3)*3)+2].value===document.getElementsByClassName('box')[(parseInt(index/3)*3)+1].value)
+                 {
+                    document.getElementsByClassName('box')[(parseInt(index/3)*3)].style.backgroundColor="green";
+                    document.getElementsByClassName('box')[(parseInt(index/3)*3)+1].style.backgroundColor="green";
+                    document.getElementsByClassName('box')[(parseInt(index/3)*3)+2].style.backgroundColor="green";
+                    document.getElementsByClassName('turn')[0].style.backgroundColor="green";
+                    document.getElementsByClassName('turn')[0].value=document.getElementsByClassName('box')[(parseInt(index/3)*3)+2].value+" winner";
+                    x=9;
+                 }
+                 if(document.getElementsByClassName('box')[index%3].value===document.getElementsByClassName('box')[index%3+3].value&&document.getElementsByClassName('box')[index%3+6].value===document.getElementsByClassName('box')[index%3+3].value)
+                 {
+                    document.getElementsByClassName('box')[index%3].style.backgroundColor="green";
+                    document.getElementsByClassName('box')[index%3+3].style.backgroundColor="green";
+                    document.getElementsByClassName('box')[index%3+6].style.backgroundColor="green";
+                    document.getElementsByClassName('turn')[0].value=document.getElementsByClassName('box')[index%3+6].value+"  winner";
+                    document.getElementsByClassName('turn')[0].style.backgroundColor="green";
+                    x=9;
+                 }
+                 if(document.getElementsByClassName('box')[0].value.length>0&&document.getElementsByClassName('box')[0].value===document.getElementsByClassName('box')[4].value&&document.getElementsByClassName('box')[4].value===document.getElementsByClassName('box')[8].value)
+                 {
+                    document.getElementsByClassName('box')[0].style.backgroundColor="green";
+                    document.getElementsByClassName('box')[4].style.backgroundColor="green";
+                    document.getElementsByClassName('box')[8].style.backgroundColor="green";
+                    document.getElementsByClassName('turn')[0].style.backgroundColor="green";
+                    document.getElementsByClassName('turn')[0].value=document.getElementsByClassName('box')[(parseInt(index/3)*3)+2].value+" winner";
+                    x=9;
+                 }
+                 if(document.getElementsByClassName('box')[2].value.length>0&&document.getElementsByClassName('box')[2].value===document.getElementsByClassName('box')[4].value&&document.getElementsByClassName('box')[4].value===document.getElementsByClassName('box')[6].value)
+                 {
+                    document.getElementsByClassName('box')[2].style.backgroundColor="green";
+                    document.getElementsByClassName('box')[4].style.backgroundColor="green";
+                    document.getElementsByClassName('box')[6].style.backgroundColor="green";
+                    document.getElementsByClassName('turn')[0].style.backgroundColor="green";
+                    document.getElementsByClassName('turn')[0].value=document.getElementsByClassName('box')[(parseInt(index/3)*3)+2].value+" winner";
+                    x=9;
+                 }
+
+              x++;
+              if(x==9)
+              {
+                document.getElementsByClassName('turn')[0].value="Game Draw";
+                document.getElementsByClassName('turn')[0].style.backgroundColor="red";
+
+                return;
+              }
+            }
+        }
+        function NewGame(){
+            document.getElementsByClassName('game-box')[0].style.opacity='1';
+            document.getElementsByClassName('turn')[0].style.opacity='1';
+            document.getElementsByClassName('turn')[0].value="X turn"
+           
+            document.getElementsByClassName('turn')[0].style.backgroundColor="darkslategrey";
+            for(let i=0;i<9;i++)
+            {
+                document.getElementsByClassName('box')[i].style.backgroundColor="aqua";
+                document.getElementsByClassName('box')[i].value="";
+            }
+        }
+    </script>
+</body>
+</html>
