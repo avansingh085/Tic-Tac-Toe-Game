@@ -98,11 +98,6 @@
     </div>
     <script>
         var x=0;
-        var arrRX=[0,0,0];
-        var arrCX=[0,0,0];
-        var arrRO=[0,0,0];
-        var arrCO=[0,0,0];
-        
         function fun(setValue,index){
             if(x>=9)
             {
@@ -179,6 +174,7 @@
                 document.getElementsByClassName('box')[i].style.backgroundColor="aqua";
                 document.getElementsByClassName('box')[i].value="";
             }
+            x=0;
         }
     </script>
 </body>
